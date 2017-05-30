@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fakeProps should return an object with all props faked (snapshot) 1`] = `
+Object {
+  "customArrayProp": Array [
+    "custom type not supported, please set the correct value for customArrayProp prop",
+  ],
+  "customProp": "custom type not supported, please set the correct value for customProp prop",
+  "optionalArray": Array [],
+  "optionalArrayOf": Array [
+    1,
+  ],
+  "optionalBool": true,
+  "optionalElement": <div>
+    fake optionalElement element
+</div>,
+  "optionalEnum": "'News'",
+  "optionalFunc": [Function],
+  "optionalMessage": "instanceOf type not supported, please set the correct value for optionalMessage prop",
+  "optionalNode": "optionalNode",
+  "optionalNumber": 1,
+  "optionalObject": Object {},
+  "optionalObjectOf": Object {
+    "prop": 1,
+  },
+  "optionalObjectWithShape": Object {
+    "color": "optionalObjectWithShape.color",
+    "fontSize": 1,
+  },
+  "optionalString": "optionalString",
+  "optionalSymbol": Symbol(),
+  "optionalUnion": "optionalUnion",
+  "requiredAny": "any",
+  "requiredFunc": [Function],
+}
+`;
+
+exports[`fakeProps should return an object with required props faked (snapshot) 1`] = `
+Object {
+  "requiredAny": "any",
+  "requiredFunc": [Function],
+}
+`;
