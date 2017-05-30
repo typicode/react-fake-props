@@ -34,5 +34,8 @@
     "pkg-ok": "^1.1.0",
     "react": "^15.5.4",
     "rimraf": "^2.6.1"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
 }
