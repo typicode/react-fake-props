@@ -47,7 +47,7 @@ _Please note that `custom` validators and `PropTypes.instanceOf` aren't supporte
 
 ## Tip
 
-When checking for a value use `props.A` rather than `'A'` as `react-fake-props` output may change.
+When checking for a value, use `props.A` rather than `'A'` as `react-fake-props` output may change.
 
 ```jsx
 const wrapper = shallow(<Component {...props} />)
