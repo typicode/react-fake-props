@@ -1,6 +1,6 @@
 # react-fake-props [![Build Status](https://travis-ci.org/typicode/react-fake-props.svg?branch=master)](https://travis-ci.org/typicode/react-fake-props) [![npm](https://badge.fury.io/js/react-fake-props.svg)](https://www.npmjs.com/package/react-fake-props)
 
-> Automatically generate fake props for your React tests
+> Simplify your React tests by automatically generating fake props
 
 `react-fake-props` parses your Component prop types using [react-docgen](https://github.com/reactjs/react-docgen) and generates fake props. It supports [PropTypes](https://github.com/facebook/prop-types) and [Flow](https://flow.org).
 
