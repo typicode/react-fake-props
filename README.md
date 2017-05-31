@@ -1,4 +1,4 @@
-# react-fake-props [![Build Status](https://travis-ci.org/typicode/react-fake-props.svg?branch=master)](https://travis-ci.org/typicode/react-fake-props) [![npm](https://badge.fury.io/js/react-fake-props.svg)](https://www.npmjs.com/package/react-fake-props) [![Support on Patreon](https://img.shields.io/badge/support-patreon-ff69b4.svg)](https://www.patreon.com/typicode)
+# react-fake-props [![Build Status](https://travis-ci.org/typicode/react-fake-props.svg?branch=master)](https://travis-ci.org/typicode/react-fake-props) [![npm](https://badge.fury.io/js/react-fake-props.svg)](https://www.npmjs.com/package/react-fake-props)
 
 > Automatically generate fake props for your React tests
 
@@ -58,4 +58,4 @@ wrapper.text().to.contain(props.A) // good
 
 ## License
 
-MIT - [Typicode :cactus:](https://github.com/typicode)
+MIT - [Typicode :cactus:](https://github.com/typicode) - [Patreon](https://www.patreon.com/typicode)
