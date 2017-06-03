@@ -10,17 +10,9 @@
 npm install react-fake-props --save-dev
 ```
 
-## Usage
+## Why?
 
-```js
-// Component.test.js
-import path from 'path'
-import fakeProps from 'react-fake-props'
-
-const componentPath = path.join(__dirname, './Component.jsx')
-
-const props = fakeProps(componentPath) // { A: 'A', B: 1 }
-```
+Assuming the following component definition:
 
 ```js
 // Component.jsx
@@ -29,12 +21,51 @@ class Component extends React.Component {
 }
 
 Component.propTypes = {
-  A: PropTypes.string.isRequired,
-  B: PropTypes.number.isRequired,
-  C: PropTypes.bool
+  stringA: PropTypes.string.isRequired,
+  stringB: PropTypes.string.isRequired,
+  stringC: PropTypes.string.isRequired,
+  stringD: PropTypes.string.isRequired,
+  stringE: PropTypes.string.isRequired,
+  number: PropTypes.number,
+  boolean: PropTypes.bool
 }
 
 export default Component
+```
+
+### Before
+
+Without `react-fake-props`, if you want to test your component you have to define manually all your props. So you may have something like this:
+
+```jsx
+const props = {
+  stringA: 'some value',
+  stringB: 'some value',
+  stringC: 'some value',
+  stringD: 'some value',
+  stringE: 'some value',
+}
+<Component {...props} />
+```
+
+### After
+
+With `react-fake-props`, you can remove all the previous lines and generate valid props based on your Component prop types:
+
+```jsx
+const props = fakeProps(componentPath)
+<Component {...props} />
+```
+
+## Usage
+
+```js
+// Component.test.js
+import path from 'path'
+import fakeProps from 'react-fake-props'
+
+const componentPath = path.join(__dirname, './Component.jsx')
+const props = fakeProps(componentPath) // { stringA: 'stringA', stringB: 'stringB', ... }
 ```
 
 _To include optional props, pass `{ optional: true }`._
