@@ -7,6 +7,10 @@
 ## Install
 
 ```sh
+yarn add react-fake-props --dev
+```
+
+```sh
 npm install react-fake-props --save-dev
 ```
 
