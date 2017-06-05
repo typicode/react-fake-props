@@ -1,8 +1,8 @@
 # react-fake-props [![Build Status](https://travis-ci.org/typicode/react-fake-props.svg?branch=master)](https://travis-ci.org/typicode/react-fake-props) [![npm](https://badge.fury.io/js/react-fake-props.svg)](https://www.npmjs.com/package/react-fake-props)
 
-> Simplify your React tests by automatically generating fake props
+> Simplify your tests by automatically generating fake props
 
-`react-fake-props` parses your Component prop types using [react-docgen](https://github.com/reactjs/react-docgen) and generates fake props. It supports [PropTypes](https://github.com/facebook/prop-types) and [Flow](https://flow.org).
+`react-fake-props` parses your Component prop types using [react-docgen](https://github.com/reactjs/react-docgen) and generates fake props. Supports [PropTypes](https://github.com/facebook/prop-types) and [Flow](https://flow.org). Works great with [Jest](https://facebook.github.io/jest/) snapshots and [Enzyme](https://github.com/airbnb/enzyme).
 
 ## Install
 
@@ -30,8 +30,6 @@ Component.propTypes = {
   stringC: PropTypes.string.isRequired,
   stringD: PropTypes.string.isRequired,
   stringE: PropTypes.string.isRequired,
-  number: PropTypes.number,
-  boolean: PropTypes.bool
 }
 
 export default Component
@@ -39,7 +37,7 @@ export default Component
 
 ### Before
 
-Without `react-fake-props`, if you want to test your component you have to define manually all your props. So you may have something like this:
+Without `react-fake-props`, to test your component you have to set manually all your props:
 
 ```jsx
 const props = {
@@ -64,12 +62,11 @@ const props = fakeProps(componentPath)
 ## Usage
 
 ```js
-// Component.test.js
 import path from 'path'
 import fakeProps from 'react-fake-props'
 
 const componentPath = path.join(__dirname, './Component.jsx')
-const props = fakeProps(componentPath) // { stringA: 'stringA', stringB: 'stringB', ... }
+const props = fakeProps(componentPath)
 ```
 
 _To include optional props, pass `{ optional: true }`._
