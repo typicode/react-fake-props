@@ -1,6 +1,6 @@
 # react-fake-props [![Build Status](https://travis-ci.org/typicode/react-fake-props.svg?branch=master)](https://travis-ci.org/typicode/react-fake-props) [![npm](https://badge.fury.io/js/react-fake-props.svg)](https://www.npmjs.com/package/react-fake-props)
 
-> Simplify your tests by automatically generating fake props
+> Automatically generating fake props
 
 `react-fake-props` parses your Component prop types using [react-docgen](https://github.com/reactjs/react-docgen) and generates fake props. Supports [PropTypes](https://github.com/facebook/prop-types) and [Flow](https://flow.org). Works great with [Jest](https://facebook.github.io/jest/) snapshots and [Enzyme](https://github.com/airbnb/enzyme).
 
