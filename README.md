@@ -37,7 +37,7 @@ export default Component
 
 ### Before
 
-Without `react-fake-props`, to test your component you have to set manually all your props:
+Without `react-fake-props`, to test your component, you would have to set manually all your props:
 
 ```jsx
 const props = {
