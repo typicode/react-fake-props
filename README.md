@@ -69,9 +69,11 @@ const componentPath = path.join(__dirname, './Component.jsx')
 const props = fakeProps(componentPath)
 ```
 
-_To include optional props, pass `{ optional: true }`._
+To include optional props, pass `{ optional: true }`.
 
-_Please note that `custom` validators and `PropTypes.instanceOf` aren't supported, you'll still need to set them manually._
+Please note:
+- `custom` validators and `PropTypes.instanceOf` aren't supported, you'll still need to set them manually.
+- `react-fake-props` requires the component path to be passed, instead of the component itself, to be able to support PropTypes and Flow.
 
 ## API
 
