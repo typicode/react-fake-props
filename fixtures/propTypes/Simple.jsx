@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 class Simple extends React.Component {
   render() {
-    // ... do things with the props
+    // ...
   }
 }
 

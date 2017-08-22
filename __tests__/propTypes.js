@@ -1,21 +1,21 @@
 import path from 'path'
 import fakeProps from '../src'
 
-const MyComponentFile = path.join(__dirname, '../fixtures/MyComponent.jsx')
-const SimpleFile = path.join(__dirname, '../fixtures/Simple.jsx')
+const ComponentFile = path.join(__dirname, '../fixtures/propTypes/Component.jsx')
+const SimpleFile = path.join(__dirname, '../fixtures/propTypes/Simple.jsx')
 
 describe('fakeProps', () => {
   it('should return an object with required props faked (snapshot)', () => {
-    expect(fakeProps(MyComponentFile)).toMatchSnapshot()
+    expect(fakeProps(ComponentFile)).toMatchSnapshot()
   })
 
   it('should return an object with all props faked (snapshot)', () => {
-    expect(fakeProps(MyComponentFile, { optional: true })).toMatchSnapshot()
+    expect(fakeProps(ComponentFile, { optional: true })).toMatchSnapshot()
   })
 
   it('should return more props with optional', () => {
-    const allProps = fakeProps(MyComponentFile, { optional: true })
-    const requiredProps = fakeProps(MyComponentFile)
+    const allProps = fakeProps(ComponentFile, { optional: true })
+    const requiredProps = fakeProps(ComponentFile)
 
     const allPropsLength = Object.keys(allProps).length
     const requiredPropsLength = Object.keys(requiredProps).length

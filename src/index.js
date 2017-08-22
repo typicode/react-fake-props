@@ -2,6 +2,10 @@ const fs = require('fs')
 const React = require('react')
 const reactDocs = require('react-docgen')
 
+function isFlow(prop) {
+  return prop.flowType
+}
+
 function getEnum(values) {
   return values[0].value
 }
@@ -30,7 +34,7 @@ function getShape(prefix, object, opts) {
   return res
 }
 
-function getFakeProp(prefix, prop, opts) {
+function getFakePropType(prefix, prop, opts) {
   switch (prop.type.name) {
     case 'array':
       return []
@@ -69,6 +73,21 @@ function getFakeProp(prefix, prop, opts) {
     default:
       return 'Error, unknown type'
   }
+}
+
+function getFakeFlow(prefix, prop, opts) {
+  switch (prop.flowType.name) {
+    // TODO handle types defined here
+    // https://github.com/reactjs/react-docgen#types
+    default:
+      return 'Error, unknown type'
+  }
+}
+
+function getFakeProp(prefix, prop, opts) {
+  return isFlow(prop)
+    ? getFakeFlow(prefix, prop, opts)
+    : getFakePropType(prefix, prop, opts)
 }
 
 module.exports = function fakeProps(file, { optional = false } = {}) {
