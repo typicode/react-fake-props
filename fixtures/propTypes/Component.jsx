@@ -43,6 +43,14 @@ MyComponent.propTypes = {
 
   // An array of a certain type
   optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
+  // An array of objects
+  arrayOfObjects: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      age: PropTypes.number,
+      isGood: PropTypes.bool
+    })
+  ),
 
   // An object with property values of a certain type
   optionalObjectOf: PropTypes.objectOf(PropTypes.number),
