@@ -2,6 +2,13 @@
 
 exports[`fakeProps should return an object with all props faked (snapshot) 1`] = `
 Object {
+  "arrayOfObjects": Array [
+    Object {
+      "age": 1,
+      "isGood": true,
+      "name": "arrayOfObjects.name",
+    },
+  ],
   "customArrayProp": Array [
     "custom type not supported, please set the correct value for customArrayProp prop",
   ],
