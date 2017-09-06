@@ -77,8 +77,8 @@ function getFakePropType (prefix, prop, opts) {
 
 function getFakeFlow (prefix, prop, opts) {
   switch (prop.flowType.name) {
-        // TODO handle types defined here
-        // https://github.com/reactjs/react-docgen#types
+    // TODO handle types defined here
+    // https://github.com/reactjs/react-docgen#types
     default:
       return 'Error, unknown type'
   }
@@ -86,8 +86,8 @@ function getFakeFlow (prefix, prop, opts) {
 
 function getFakeProp (prefix, prop, opts) {
   return isFlow(prop)
-        ? getFakeFlow(prefix, prop, opts)
-        : getFakePropType(prefix, prop, opts)
+    ? getFakeFlow(prefix, prop, opts)
+    : getFakePropType(prefix, prop, opts)
 }
 
 module.exports = function fakeProps (file, { optional = false } = {}) {
