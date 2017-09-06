@@ -2,8 +2,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+class Message {}
+
 class MyComponent extends React.Component {
-  render() {
+  render () {
     // ... do things with the props
   }
 }
@@ -71,7 +73,7 @@ MyComponent.propTypes = {
   // You can also specify a custom validator. It should return an Error
   // object if the validation fails. Don't `console.warn` or throw, as this
   // won't work inside `oneOfType`.
-  customProp: function(props, propName, componentName) {
+  customProp: function (props, propName, componentName) {
     if (!/matchme/.test(props[propName])) {
       return new Error(
         'Invalid prop `' +
@@ -89,7 +91,7 @@ MyComponent.propTypes = {
   // will be called for each key in the array or object. The first two
   // arguments of the validator are the array or object itself, and the
   // current item's key.
-  customArrayProp: PropTypes.arrayOf(function(
+  customArrayProp: PropTypes.arrayOf(function (
     propValue,
     key,
     componentName,

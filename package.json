@@ -17,8 +17,9 @@
   "author": "typicode <typicode@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest && standard",
     "build": "rimraf lib && babel src --out-dir lib",
+    "fix": "standard --fix",
     "prepublish": "yarn build && pkg-ok",
     "precommit": "yarn test"
   },
@@ -27,15 +28,25 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
+    "eslint-plugin-flowtype": "^2.35.1",
     "husky": "^0.13.3",
     "jest": "^20.0.1",
     "pkg-ok": "^1.1.0",
     "react": "^15.5.4",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "standard": "^10.0.3"
   },
   "peerDependencies": {
     "react": "*"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ],
+    "env": "jest"
   }
 }

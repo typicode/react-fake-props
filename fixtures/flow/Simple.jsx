@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 type Props = {
   requiredString: string,
@@ -10,7 +10,7 @@ type Props = {
 }
 
 class Simple extends React.Component<void, Props, void> {
-  render() {
+  render () {
     // ...
   }
 }

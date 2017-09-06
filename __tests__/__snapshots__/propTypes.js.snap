@@ -35,7 +35,7 @@ Object {
     "fontSize": 1,
   },
   "optionalString": "optionalString",
-  "optionalSymbol": Symbol(),
+  "optionalSymbol": Symbol(fake symbol),
   "optionalUnion": "optionalUnion",
   "requiredAny": "any",
   "requiredFunc": [Function],
