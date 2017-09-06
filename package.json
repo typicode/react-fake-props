@@ -17,7 +17,7 @@
   "author": "typicode <typicode@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest && standard",
+    "test": "standard && jest",
     "build": "rimraf lib && babel src --out-dir lib",
     "fix": "standard --fix",
     "prepublish": "yarn build && pkg-ok",
