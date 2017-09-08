@@ -34,28 +34,76 @@ function getShape(prefix, object, opts) {
     return res
 }
 
+function fakeString(prefix) {
+    return prefix
+}
+
+function fakeBool() {
+    return true
+}
+
+function fakeArray() {
+    return []
+}
+
+function fakeNumber() {
+    return 1
+}
+
+function fakeObject() {
+    return {}
+}
+
+function fakeSymbol() {
+    return Symbol()
+}
+
+function fakeNode(prefix) {
+    return prefix
+}
+
+function fakeElement(prefix) {
+    return React.createElement('div', [], `fake ${prefix} element`)
+}
+
+function fakeInstanceOf(prefix) {
+    return `instanceOf type not supported, please set the correct value for ${prefix} prop`
+}
+
+function fakeAny() {
+    return 'any'
+}
+
+function fakeCustom(prefix) {
+    return `custom type not supported, please set the correct value for ${prefix} prop`
+}
+
+function fakeFunction() {
+    return function fakeFunction() {}
+}
+
 function getFakePropType(prefix, prop, opts) {
     switch (prop.type.name) {
         case 'array':
-            return []
+            return fakeArray()
         case 'bool':
-            return true
+            return fakeBool()
         case 'func':
-            return function fakeFunction() {}
+            return fakeFunction()
         case 'number':
-            return 1
+            return fakeNumber()
         case 'object':
-            return {}
+            return fakeObject()
         case 'string':
-            return prefix
+            return fakeString(prefix)
         case 'symbol':
-            return Symbol()
+            return fakeSymbol()
         case 'node':
-            return prefix
+            return fakeNode(prefix)
         case 'element':
-            return React.createElement('div', [], `fake ${prefix} element`)
+            return fakeElement(prefix)
         case 'instanceOf':
-            return `instanceOf type not supported, please set the correct value for ${prefix} prop`
+            return fakeInstanceOf(prefix)
         case 'enum':
             return getEnum(prop.type.value)
         case 'union':
@@ -67,16 +115,99 @@ function getFakePropType(prefix, prop, opts) {
         case 'shape':
             return getShape(prefix, prop.type.value, opts)
         case 'any':
-            return 'any'
+            return fakeAny()
         case 'custom':
-            return `custom type not supported, please set the correct value for ${prefix} prop`
+            return fakeCustom(prefix)
         default:
             return 'Error, unknown type'
     }
 }
 
-function getFakeFlow(prefix, prop, opts) {
-    switch (prop.flowType.name) {
+function fakeSignature(prefix, flowType, opts) {
+    switch (flowType.type) {
+        case 'function':
+            return fakeFunction()
+        case 'object':
+            // e.g. of signature
+            //         "signature": {
+            //     "properties": [
+            //         {
+            //             "key": "name",
+            //             "value": {
+            //                 "name": "string",
+            //                 "required": true
+            //             }
+            //         },
+            //         {
+            //             "key": "avatar",
+            //             "value": {
+            //                 "name": "string",
+            //                 "required": true
+            //             }
+            //         },
+            //         {
+            //             "key": "time",
+            //             "value": {
+            //                 "name": "number",
+            //                 "required": false
+            //             }
+            //         }
+            //     ]
+            // }
+
+            if (flowType.signature.properties) {
+                return flowType.signature.properties.reduce((acc, prop) => {
+                    return Object.assign({}, acc, {
+                        [prop.key]: getFakeFlow(prop.key, prop.value, opts)
+                    })
+                }, {})
+            } else {
+                return 'Error: unknown signature'
+            }
+        default:
+            return 'Error, unknown signature'
+    }
+}
+
+function flowType(prefix, prop, opts) {
+    return getFakeFlow(prefix, prop.flowType, opts)
+}
+
+function getFakeFlow(prefix, flowType, opts) {
+    switch (flowType.name) {
+        case 'boolean':
+            return fakeBool()
+        case 'string':
+            return fakeString(prefix)
+        case 'number':
+            return fakeNumber()
+        case 'Function':
+            return fakeFunction()
+        case 'object':
+        case 'Object':
+            return fakeObject()
+        case 'Array':
+            // e.g. Array<Object>
+            // "flowType": {
+            //     "name": "Array",
+            //     "elements": [
+            //         {
+            //             "name": "Object"
+            //         }
+            //     ],
+            //     "raw": "Array<Object>"
+            // },
+            if (flowType.elements) {
+                return flowType.elements.map(prop => {
+                    return getFakeFlow('super', prop, opts)
+                })
+            } else {
+                return fakeArray()
+            }
+        case 'signature':
+            return fakeSignature(prefix, flowType, opts)
+        case 'unknown':
+            return 'unknown'
         // TODO handle types defined here
         // https://github.com/reactjs/react-docgen#types
         default:
@@ -86,7 +217,7 @@ function getFakeFlow(prefix, prop, opts) {
 
 function getFakeProp(prefix, prop, opts) {
     return isFlow(prop)
-        ? getFakeFlow(prefix, prop, opts)
+        ? flowType(prefix, prop, opts)
         : getFakePropType(prefix, prop, opts)
 }
 
@@ -95,7 +226,7 @@ module.exports = function fakeProps(file, { optional = false } = {}) {
     const componentInfo = reactDocs.parse(source)
 
     const { props } = componentInfo
-    const result = {}
+    let result = {}
 
     Object.keys(props).forEach(key => {
         const prop = props[key]
