@@ -123,10 +123,26 @@ function getFakePropType(prefix, prop, opts) {
   }
 }
 
+function fakeFlowFunction(prefix, flowType, opts) {
+  if (flowType.signature) {
+    return Function.apply(
+      null,
+      flowType.signature.arguments
+        .map(arg => arg.name)
+        .concat(
+          'return ' +
+            JSON.stringify(getFakeFlow(prefix, flowType.signature.return, opts))
+        )
+    )
+  } else {
+    return fakeFunction()
+  }
+}
+
 function fakeSignature(prefix, flowType, opts) {
   switch (flowType.type) {
     case 'function':
-      return fakeFunction()
+      return fakeFlowFunction(prefix, flowType, opts)
     case 'object':
       // e.g. of signature
       //         "signature": {

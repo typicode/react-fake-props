@@ -31,7 +31,11 @@ type Person = {
   repos: Array<Repo>
 }
 
-type Props = Person
+type Props = {
+  person: Person,
+  onNameChange: (id: number, newName: string) => any,
+  getFriend?: (person: Person) => Person
+}
 
 class MyComponent extends React.Component {
   props: Props

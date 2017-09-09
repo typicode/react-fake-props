@@ -2,52 +2,59 @@
 
 exports[`fakeProps should return an object with all props faked (snapshot) 1`] = `
 Object {
-  "address": Object {
-    "pincode": 1,
-    "street": "address.street",
-    "street2": "address.street2",
-  },
-  "age": 1,
-  "family": Array [
-    1,
-  ],
-  "id": 1,
-  "name": "name",
-  "repos": Array [
-    Object {
-      "commits": Array [
-        Object {
-          "id": "super.id",
-          "message": "super.message",
-        },
-      ],
-      "demoSite": "super.demoSite",
-      "npm": "super.npm",
-      "url": "super.url",
+  "getFriend": [Function],
+  "onNameChange": [Function],
+  "person": Object {
+    "address": Object {
+      "pincode": 1,
+      "street": "person.address.street",
+      "street2": "person.address.street2",
     },
-  ],
+    "age": 1,
+    "family": Array [
+      1,
+    ],
+    "id": 1,
+    "name": "person.name",
+    "repos": Array [
+      Object {
+        "commits": Array [
+          Object {
+            "id": "super.id",
+            "message": "super.message",
+          },
+        ],
+        "demoSite": "super.demoSite",
+        "npm": "super.npm",
+        "url": "super.url",
+      },
+    ],
+  },
 }
 `;
 
 exports[`fakeProps should return an object with required props faked (snapshot) 1`] = `
 Object {
-  "address": Object {
-    "pincode": 1,
-    "street": "address.street",
-  },
-  "age": 1,
-  "id": 1,
-  "name": "name",
-  "repos": Array [
-    Object {
-      "commits": Array [
-        Object {
-          "id": "super.id",
-          "message": "super.message",
-        },
-      ],
-      "url": "super.url",
+  "onNameChange": [Function],
+  "person": Object {
+    "address": Object {
+      "pincode": 1,
+      "street": "person.address.street",
     },
-  ],
+    "age": 1,
+    "id": 1,
+    "name": "person.name",
+    "repos": Array [
+      Object {
+        "commits": Array [
+          Object {
+            "id": "super.id",
+            "message": "super.message",
+          },
+        ],
+        "url": "super.url",
+      },
+    ],
+  },
 }
 `;
