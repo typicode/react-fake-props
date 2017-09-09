@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fakeProps should return an object with all props faked (snapshot) 1`] = `
+Object {
+  "address": Object {
+    "pincode": 1,
+    "street": "address.street",
+    "street2": "address.street2",
+  },
+  "age": 1,
+  "family": Array [
+    1,
+  ],
+  "id": 1,
+  "name": "name",
+  "repos": Array [
+    Object {
+      "demoSite": "super.demoSite",
+      "npm": "super.npm",
+      "url": "super.url",
+    },
+  ],
+}
+`;
+
+exports[`fakeProps should return an object with required props faked (snapshot) 1`] = `
+Object {
+  "address": Object {
+    "pincode": 1,
+    "street": "address.street",
+  },
+  "age": 1,
+  "id": 1,
+  "name": "name",
+  "repos": Array [
+    Object {
+      "url": "super.url",
+    },
+  ],
+}
+`;
