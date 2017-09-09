@@ -10,10 +10,16 @@ type Address = {
   pincode: number
 }
 
+type Commit = {
+  id: string,
+  message: string
+}
+
 type Repo = {
   url: string,
   demoSite?: string,
-  npm?: string
+  npm?: string,
+  commits: Array<Commit>
 }
 
 type Person = {

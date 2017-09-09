@@ -15,6 +15,12 @@ Object {
   "name": "name",
   "repos": Array [
     Object {
+      "commits": Array [
+        Object {
+          "id": "super.id",
+          "message": "super.message",
+        },
+      ],
       "demoSite": "super.demoSite",
       "npm": "super.npm",
       "url": "super.url",
@@ -34,6 +40,12 @@ Object {
   "name": "name",
   "repos": Array [
     Object {
+      "commits": Array [
+        Object {
+          "id": "super.id",
+          "message": "super.message",
+        },
+      ],
       "url": "super.url",
     },
   ],
