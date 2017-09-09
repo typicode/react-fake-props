@@ -1,7 +1,10 @@
 import path from 'path'
 import fakeProps from '../src'
 
-const ComponentFile = path.join(__dirname, '../fixtures/propTypes/Component.jsx')
+const ComponentFile = path.join(
+  __dirname,
+  '../fixtures/propTypes/Component.jsx'
+)
 const SimpleFile = path.join(__dirname, '../fixtures/propTypes/Simple.jsx')
 
 describe('fakeProps', () => {

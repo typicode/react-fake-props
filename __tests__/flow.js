@@ -4,7 +4,7 @@ import fakeProps from '../src'
 // const ComponentFile = path.join(__dirname, '../fixtures/ComponentWithPropTypes.jsx')
 const SimpleFile = path.join(__dirname, '../fixtures/flow/Simple.jsx')
 
-describe.skip('fakeProps', () => {
+describe('fakeProps', () => {
   // it('should return an object with required props faked (snapshot)', () => {
   //   expect(fakeProps(ComponentFile)).toMatchSnapshot()
   // })
