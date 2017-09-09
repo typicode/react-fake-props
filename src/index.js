@@ -210,8 +210,6 @@ function getFakeFlow(prefix, flowType, opts) {
       return fakeSignature(prefix, flowType, opts)
     case 'unknown':
       return 'unknown'
-    // TODO handle types defined here
-    // https://github.com/reactjs/react-docgen#types
     default:
       return 'Error, unknown type'
   }
