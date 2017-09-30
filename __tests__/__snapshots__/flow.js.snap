@@ -20,13 +20,13 @@ Object {
       Object {
         "commits": Array [
           Object {
-            "id": "super.id",
-            "message": "super.message",
+            "id": "person.repos.commits.id",
+            "message": "person.repos.commits.message",
           },
         ],
-        "demoSite": "super.demoSite",
-        "npm": "super.npm",
-        "url": "super.url",
+        "demoSite": "person.repos.demoSite",
+        "npm": "person.repos.npm",
+        "url": "person.repos.url",
       },
     ],
   },
@@ -48,11 +48,11 @@ Object {
       Object {
         "commits": Array [
           Object {
-            "id": "super.id",
-            "message": "super.message",
+            "id": "person.repos.commits.id",
+            "message": "person.repos.commits.message",
           },
         ],
-        "url": "super.url",
+        "url": "person.repos.url",
       },
     ],
   },

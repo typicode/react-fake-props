@@ -223,7 +223,7 @@ function getFakeFlow(prefix, flowType, opts) {
             // },
             if (flowType.elements) {
                 return flowType.elements.map(prop => {
-                    return getFakeFlow('super', prop, opts)
+                    return getFakeFlow(prefix, prop, opts)
                 })
             } else {
                 return fakeArray()
