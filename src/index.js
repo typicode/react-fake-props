@@ -167,7 +167,6 @@ function fakeSignature (prefix, flowType, opts) {
       //     ]
       //   }
       // }
-
       if (flowType.signature.properties) {
         return flowType.signature.properties
           .filter(prop => prop.value.required || opts.optional)
