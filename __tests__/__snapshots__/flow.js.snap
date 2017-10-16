@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fakeProps should return an object with all props faked (snapshot) 1`] = `
+Object {
+  "getFriend": [Function],
+  "onNameChange": [Function],
+  "person": Object {
+    "address": Object {
+      "pincode": 1,
+      "street": "person.address.street",
+      "street2": "person.address.street2",
+    },
+    "age": 1,
+    "family": Array [
+      1,
+    ],
+    "id": 1,
+    "name": "person.name",
+    "repos": Array [
+      Object {
+        "commits": Array [
+          Object {
+            "id": "person.repos.commits.id",
+            "message": "person.repos.commits.message",
+          },
+        ],
+        "demoSite": "person.repos.demoSite",
+        "npm": "person.repos.npm",
+        "url": "person.repos.url",
+      },
+    ],
+  },
+}
+`;
+
+exports[`fakeProps should return an object with required props faked (snapshot) 1`] = `
+Object {
+  "onNameChange": [Function],
+  "person": Object {
+    "address": Object {
+      "pincode": 1,
+      "street": "person.address.street",
+    },
+    "age": 1,
+    "id": 1,
+    "name": "person.name",
+    "repos": Array [
+      Object {
+        "commits": Array [
+          Object {
+            "id": "person.repos.commits.id",
+            "message": "person.repos.commits.message",
+          },
+        ],
+        "url": "person.repos.url",
+      },
+    ],
+  },
+}
+`;

@@ -1,4 +1,5 @@
-import * as React from 'react'
+// @flow
+import React from 'react'
 
 type Props = {
   requiredString: string,

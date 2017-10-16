@@ -19,9 +19,9 @@
   "scripts": {
     "test": "standard && jest",
     "build": "rimraf lib && babel src --out-dir lib",
-    "fix": "standard --fix",
-    "prepublish": "yarn build && pkg-ok",
-    "precommit": "yarn test"
+    "fix": "prettier **/*.js --write && standard --fix",
+    "prepublishOnly": "npm run build && pkg-ok",
+    "precommit": "npm test"
   },
   "dependencies": {
     "react-docgen": "^2.15.0"
@@ -35,6 +35,7 @@
     "husky": "^0.13.3",
     "jest": "^20.0.1",
     "pkg-ok": "^1.1.0",
+    "prettier": "^1.7.4",
     "react": "^15.5.4",
     "rimraf": "^2.6.1",
     "standard": "^10.0.3"
