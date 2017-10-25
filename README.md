@@ -22,7 +22,7 @@ Assuming the following Component with Flow types:
 // @flow
 
 type Props = {
-  stringA: number,
+  stringA: string,
   stringB: string,
   stringC: string,
   stringD: string,
