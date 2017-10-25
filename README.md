@@ -1,8 +1,8 @@
 # react-fake-props [![Build Status](https://travis-ci.org/typicode/react-fake-props.svg?branch=master)](https://travis-ci.org/typicode/react-fake-props) [![npm](https://badge.fury.io/js/react-fake-props.svg)](https://www.npmjs.com/package/react-fake-props)
 
-> Automatically generate fake props
+> Simple utility to automatically generate fake props for your tests
 
-`react-fake-props` parses your Component prop types using [react-docgen](https://github.com/reactjs/react-docgen) and generates fake props. Supports [PropTypes](https://github.com/facebook/prop-types) and [Flow](https://flow.org). Works great with [Jest](https://facebook.github.io/jest/) snapshots and [Enzyme](https://github.com/airbnb/enzyme).
+`react-fake-props` parses your Component prop types using [react-docgen](https://github.com/reactjs/react-docgen) and generates fake props. Supports [Flow](https://flow.org) and [PropTypes](https://github.com/facebook/prop-types). Works great with [Jest](https://facebook.github.io/jest/) snapshots and [Enzyme](https://github.com/airbnb/enzyme).
 
 ## Install
 
@@ -16,9 +16,29 @@ npm install react-fake-props --save-dev
 
 ## Why?
 
-Assuming the following component definition:
+Assuming the following Component with Flow types:
 
-```js
+```jsx
+// @flow
+
+type Props = {
+  stringA: number,
+  stringB: string,
+  stringC: string,
+  stringD: string,
+  stringE: string,
+}
+
+class MyComponent extends React.Component<Props> {
+  // ...
+}
+
+export default Component
+```
+
+Or PropTypes:
+
+```jsx
 // Component.jsx
 class Component extends React.Component {
   // ...
@@ -73,7 +93,7 @@ To include optional props, pass `{ optional: true }`.
 
 Please note:
 - `custom` validators and `PropTypes.instanceOf` aren't supported, you'll still need to set them manually.
-- `react-fake-props` requires the component path to be passed, instead of the component itself, to be able to support PropTypes and Flow.
+- `react-fake-props` requires the component path to be passed, instead of the component itself, to be able to support Flow and PropTypes.
 
 ## API
 
