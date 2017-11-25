@@ -24,7 +24,6 @@ Assuming the following Component with Flow types:
 
 ```jsx
 // @flow
-
 type Props = {
   stringA: string,
   stringB: string,
