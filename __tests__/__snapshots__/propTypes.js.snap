@@ -20,7 +20,7 @@ Object {
   "optionalBool": true,
   "optionalElement": <div>
     fake optionalElement element
-</div>,
+  </div>,
   "optionalEnum": "'News'",
   "optionalFunc": [Function],
   "optionalMessage": "instanceOf type not supported, please set the correct value for optionalMessage prop",
