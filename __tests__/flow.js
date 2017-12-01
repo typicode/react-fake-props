@@ -3,8 +3,13 @@ import fakeProps from '../src'
 
 const ComponentFile = path.join(__dirname, '../fixtures/flow/Component.jsx')
 const SimpleFile = path.join(__dirname, '../fixtures/flow/Simple.jsx')
+const NoProps = require.resolve('../fixtures/flow/NoProps.jsx')
 
 describe('fakeProps', () => {
+  it('should return an object with no props (snapshot)', () => {
+    expect(fakeProps(NoProps)).toMatchSnapshot()
+  })
+
   it('should return an object with required props faked (snapshot)', () => {
     expect(fakeProps(ComponentFile)).toMatchSnapshot()
   })

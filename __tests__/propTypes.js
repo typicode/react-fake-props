@@ -6,8 +6,13 @@ const ComponentFile = path.join(
   '../fixtures/propTypes/Component.jsx'
 )
 const SimpleFile = path.join(__dirname, '../fixtures/propTypes/Simple.jsx')
+const NoProps = require.resolve('../fixtures/propTypes/NoProps.jsx')
 
 describe('fakeProps', () => {
+  it('should return an object with no props (snapshot)', () => {
+    expect(fakeProps(NoProps)).toMatchSnapshot()
+  })
+
   it('should return an object with required props faked (snapshot)', () => {
     expect(fakeProps(ComponentFile)).toMatchSnapshot()
   })
