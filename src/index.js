@@ -233,7 +233,7 @@ function getFakeProp (prefix, prop, opts) {
     : getFakePropType(prefix, prop, opts)
 }
 
-function fakeDataForProps (props, { optional = false } = {}) {
+function fakeDataForProps (props = {}, { optional = false } = {}) {
   return Object.keys(props).reduce((acc, key) => {
     const prop = props[key]
     if (prop.required || optional) {

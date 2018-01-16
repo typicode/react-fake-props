@@ -33,6 +33,8 @@ Object {
 }
 `;
 
+exports[`fakeProps should return an object with no props (snapshot) 1`] = `Object {}`;
+
 exports[`fakeProps should return an object with required props faked (snapshot) 1`] = `
 Object {
   "onNameChange": [Function],
