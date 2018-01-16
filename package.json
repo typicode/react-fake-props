@@ -28,26 +28,35 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.0.2",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.1.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-flowtype": "^2.41.0",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
+    "jest": "^22.1.1",
     "pkg-ok": "^1.1.0",
-    "prettier": "^1.8.2",
-    "react": "^16.1.1",
+    "prettier": "^1.10.2",
+    "react": "^16.2.0",
     "rimraf": "^2.6.2",
     "standard": "^10.0.3"
   },
   "peerDependencies": {
     "react": "*"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
   "standard": {
     "parser": "babel-eslint",
     "plugins": [
       "flowtype"
     ],
-    "env": "jest"
+    "env": "jest",
+    "ignore": [
+      "fixtures/flow/"
+    ]
   }
 }
