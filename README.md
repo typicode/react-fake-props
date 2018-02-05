@@ -25,11 +25,9 @@ type Props = {
   name: string
 }
 
-class MyComponent extends React.Component<Props> {
+class Component extends React.Component<Props> {
   // ...
 }
-
-export default Component
 ```
 
 Or PropTypes:
@@ -44,8 +42,6 @@ Component.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 }
-
-export default Component
 ```
 
 With `react-fake-props`, you can generate valid props based on your Component prop types:
