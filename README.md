@@ -14,18 +14,15 @@ yarn add react-fake-props --dev
 npm install react-fake-props --save-dev
 ```
 
-## Why?
+## Example
 
 Assuming the following Component with Flow types:
 
 ```jsx
 // @flow
 type Props = {
-  stringA: string,
-  stringB: string,
-  stringC: string,
-  stringD: string,
-  stringE: string,
+  id: number,
+  name: string
 }
 
 class MyComponent extends React.Component<Props> {
@@ -44,37 +41,23 @@ class Component extends React.Component {
 }
 
 Component.propTypes = {
-  stringA: PropTypes.string.isRequired,
-  stringB: PropTypes.string.isRequired,
-  stringC: PropTypes.string.isRequired,
-  stringD: PropTypes.string.isRequired,
-  stringE: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
 }
 
 export default Component
 ```
 
-### Before
-
-Without `react-fake-props`, to test your component, you would have to set manually all your props:
-
-```jsx
-const props = {
-  stringA: 'some value',
-  stringB: 'some value',
-  stringC: 'some value',
-  stringD: 'some value',
-  stringE: 'some value',
-}
-<Component {...props} />
-```
-
-### After
-
-With `react-fake-props`, you can remove all the previous lines and generate valid props based on your Component prop types:
+With `react-fake-props`, you can generate valid props based on your Component prop types:
 
 ```jsx
 const props = fakeProps(componentPath)
+/*
+{
+  id: 1,
+  name: 'name'
+}
+*/
 <Component {...props} />
 ```
 
