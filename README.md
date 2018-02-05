@@ -33,14 +33,13 @@ class Component extends React.Component<Props> {
 Or PropTypes:
 
 ```jsx
-// Component.jsx
 class Component extends React.Component {
   // ...
 }
 
 Component.propTypes = {
   id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 }
 ```
 
