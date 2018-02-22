@@ -24,7 +24,7 @@
     "precommit": "npm test"
   },
   "dependencies": {
-    "react-docgen": "^2.20.0"
+    "react-docgen": "^3.0.0-beta11"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
