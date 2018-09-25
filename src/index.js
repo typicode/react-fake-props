@@ -253,4 +253,4 @@ module.exports = function (file, { optional = false } = {}) {
   return fakeDataForProps(componentInfo.props, { optional })
 }
 
-exports.fakeDataForProps = fakeDataForProps
+module.exports.fakeDataForProps = fakeDataForProps
