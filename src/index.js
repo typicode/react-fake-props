@@ -248,7 +248,7 @@ function fakeDataForProps (props = {}, { optional = false } = {}) {
 
 module.exports = function (file, { optional = false } = {}) {
   const source = fs.readFileSync(file)
-  const componentInfo = reactDocs.parse(source)
+  const componentInfo = reactDocs.parse(source, reactDocs.resolver.findAllComponentDefinitions)
 
   return fakeDataForProps(componentInfo.props, { optional })
 }
