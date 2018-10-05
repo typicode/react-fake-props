@@ -4,6 +4,10 @@
 
 `react-fake-props` parses your Component prop types using [react-docgen](https://github.com/reactjs/react-docgen) and generates fake props. Supports [Flow](https://flow.org) and [PropTypes](https://github.com/facebook/prop-types). Works great with [Jest](https://facebook.github.io/jest/) snapshots and [Enzyme](https://github.com/airbnb/enzyme).
 
+<a href="https://www.patreon.com/typicode">
+  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
 ## Install
 
 ```sh
