@@ -47,7 +47,8 @@
   "jest": {
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
-    }
+    },
+    "testURL": "http://localhost/"
   },
   "standard": {
     "parser": "babel-eslint",
