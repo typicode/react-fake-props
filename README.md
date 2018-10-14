@@ -91,6 +91,10 @@ wrapper.text().to.contain('A') // bad
 wrapper.text().to.contain(props.A) // good
 ```
 
+## See also
+
+* [react-lodash](https://github.com/typicode/react-lodash) - Lodash as React components
+
 ## License
 
 MIT - [Typicode :cactus:](https://github.com/typicode) - [Patreon](https://www.patreon.com/typicode)
