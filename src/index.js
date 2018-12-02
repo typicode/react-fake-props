@@ -246,11 +246,26 @@ function fakeDataForProps (props = {}, { optional = false } = {}) {
   }, {})
 }
 
-module.exports = function (file, { optional = false } = {}) {
+module.exports = function (file, { optional = false, all = false } = {}) {
   const source = fs.readFileSync(file)
-  const componentInfo = reactDocs.parse(source, reactDocs.resolver.findAllComponentDefinitions)
 
-  return fakeDataForProps(componentInfo.props, { optional })
+  if (all) {
+    // Parse using findAllComponentDefinitions resolver
+    const componentInfoArray = reactDocs.parse(
+      source,
+      reactDocs.resolver.findAllComponentDefinitions
+    )
+
+    // Get fake props for each component
+    return componentInfoArray.map(componentInfo => ({
+      displayName: componentInfo.displayName,
+      props: fakeDataForProps(componentInfo.props, { optional })
+    }))
+  } else {
+    // Parse
+    const componentInfo = reactDocs.parse(source)
+
+    // Get fake props
+    return fakeDataForProps(componentInfo.props, { optional })
+  }
 }
-
-module.exports.fakeDataForProps = fakeDataForProps

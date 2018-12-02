@@ -4,6 +4,7 @@ import fakeProps from '../src'
 const ComponentFile = path.join(__dirname, '../fixtures/flow/Component.jsx')
 const SimpleFile = path.join(__dirname, '../fixtures/flow/Simple.jsx')
 const NoProps = require.resolve('../fixtures/flow/NoProps.jsx')
+const Multiple = require.resolve('../fixtures/flow/Multiple.jsx')
 
 describe('fakeProps', () => {
   it('should return an object with no props (snapshot)', () => {
@@ -54,5 +55,12 @@ describe('fakeProps', () => {
     expect(props.requiredObject.requiredString).toBe(
       'requiredObject.requiredString'
     )
+  })
+
+  it('should work with multiple components', () => {
+    const component = fakeProps(Multiple, { all: true }).find(
+      ({ displayName }) => displayName === 'First'
+    )
+    expect(component.props.requiredString).toBe('requiredString')
   })
 })
