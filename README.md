@@ -11,11 +11,11 @@
 ## Install
 
 ```sh
-yarn add react-fake-props --dev
+npm install react-fake-props --save-dev
 ```
 
 ```sh
-npm install react-fake-props --save-dev
+yarn add react-fake-props --dev
 ```
 
 ## Example
@@ -76,9 +76,19 @@ Please note:
 - `custom` validators and `PropTypes.instanceOf` aren't supported, you'll still need to set them manually.
 - `react-fake-props` requires the component path to be passed, instead of the component itself, to be able to support Flow and PropTypes.
 
+### For multiple components in single file
+
+By passing `{ all: true }`, `fakeProps` will return an array of all components found in `componentPath` with corresponding fake props. Works even for the ones that aren't exported.
+
+```js
+// Pick the component you want to get fake props using displayName
+const components = fakeProps(componentPath, { all: true })
+const { props } = components.find({ displayName } => displayName === 'SomeComponent')
+```
+
 ## API
 
-`fakeProps(componentPath[, { optional: false } ])`
+`fakeProps(componentPath[, { optional: false, all: false } ])`
 
 ## Tip
 

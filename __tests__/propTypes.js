@@ -7,6 +7,7 @@ const ComponentFile = path.join(
 )
 const SimpleFile = path.join(__dirname, '../fixtures/propTypes/Simple.jsx')
 const NoProps = require.resolve('../fixtures/propTypes/NoProps.jsx')
+const Multiple = require.resolve('../fixtures/propTypes/Multiple.jsx')
 
 describe('fakeProps', () => {
   it('should return an object with no props (snapshot)', () => {
@@ -48,5 +49,12 @@ describe('fakeProps', () => {
     expect(props.requiredShape.requiredString).toBe(
       'requiredShape.requiredString'
     )
+  })
+
+  it('should work with multiple components', () => {
+    const component = fakeProps(Multiple, { all: true }).find(
+      ({ displayName }) => displayName === 'First'
+    )
+    expect(component.props.requiredString).toBe('requiredString')
   })
 })
