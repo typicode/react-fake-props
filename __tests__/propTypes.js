@@ -8,6 +8,7 @@ const ComponentFile = path.join(
 const SimpleFile = path.join(__dirname, '../fixtures/propTypes/Simple.jsx')
 const NoProps = require.resolve('../fixtures/propTypes/NoProps.jsx')
 const Multiple = require.resolve('../fixtures/propTypes/Multiple.jsx')
+const NestedShape = require.resolve('../fixtures/propTypes/NestedShape.jsx')
 
 describe('fakeProps', () => {
   it('should return an object with no props (snapshot)', () => {
@@ -20,6 +21,10 @@ describe('fakeProps', () => {
 
   it('should return an object with all props faked (snapshot)', () => {
     expect(fakeProps(ComponentFile, { optional: true })).toMatchSnapshot()
+  })
+
+  it('should work with nested shape objects', () => {
+    expect(fakeProps(NestedShape, { optional: true })).toMatchSnapshot()
   })
 
   it('should return more props with optional', () => {

@@ -29,7 +29,7 @@ function getShape (prefix, object, opts) {
   Object.keys(object).forEach(key => {
     const type = object[key]
     if (type.required || opts.optional) {
-      res[key] = getFakeProp(`${prefix}.${key}`, { type })
+      res[key] = getFakeProp(`${prefix}.${key}`, { type }, opts)
     }
   })
 
