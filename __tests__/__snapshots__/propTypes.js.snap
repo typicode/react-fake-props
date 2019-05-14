@@ -50,3 +50,15 @@ Object {
   "requiredFunc": [Function],
 }
 `;
+
+exports[`fakeProps should work with nested shape objects 1`] = `
+Object {
+  "requiredShape": Object {
+    "nestedRequiredShape": Object {
+      "optionalString": "requiredShape.nestedRequiredShape.optionalString",
+    },
+    "optionalString": "requiredShape.optionalString",
+  },
+  "requiredString": "requiredString",
+}
+`;
