@@ -1,6 +1,6 @@
 {
   "name": "react-fake-props",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "description": "Automatically generate fake props for your React tests",
   "keywords": [
     "react",
