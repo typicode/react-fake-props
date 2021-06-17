@@ -2,7 +2,7 @@
 
 > Magically generate fake props for your React tests 🔮
 
-`react-fake-props` parses your Component prop types using [react-docgen](https://github.com/reactjs/react-docgen) and generates fake props. Supports [Flow](https://flow.org) and [PropTypes](https://github.com/facebook/prop-types). Works great with [Jest](https://facebook.github.io/jest/) snapshots and [Enzyme](https://github.com/airbnb/enzyme).
+`react-fake-props` parses your Component prop types using [react-docgen](https://github.com/reactjs/react-docgen) and generates fake props. Supports [TypeScript](https://www.typescriptlang.org/), [Flow](https://flow.org) and [PropTypes](https://github.com/facebook/prop-types). Works great with [Jest](https://facebook.github.io/jest/) snapshots and [Enzyme](https://github.com/airbnb/enzyme).
 
 <a href="https://www.patreon.com/typicode">
   <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
@@ -20,7 +20,20 @@ yarn add react-fake-props --dev
 
 ## Example
 
-Assuming the following Component with Flow types:
+Assuming the following Component with TypeScript:
+
+```jsx
+type Props = {
+  id: number
+  name: string
+}
+
+class Component extends React.Component<Props> {
+  // ...
+}
+```
+
+Or Flow types:
 
 ```jsx
 // @flow
@@ -74,7 +87,7 @@ To include optional props, pass `{ optional: true }`.
 
 Please note:
 - `custom` validators and `PropTypes.instanceOf` aren't supported, you'll still need to set them manually.
-- `react-fake-props` requires the component path to be passed, instead of the component itself, to be able to support Flow and PropTypes.
+- `react-fake-props` requires the component path to be passed, instead of the component itself, to be able to support TypeScript, Flow and PropTypes.
 
 ### For multiple components in single file
 

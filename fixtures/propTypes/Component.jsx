@@ -6,7 +6,7 @@ class Message {}
 
 class MyComponent extends React.Component {
   render () {
-    // ... do things with the props
+    return null
   }
 }
 

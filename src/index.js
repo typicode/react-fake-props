@@ -6,6 +6,10 @@ function isFlow (prop) {
   return prop.flowType
 }
 
+function isTs (prop) {
+  return prop.tsType
+}
+
 function getEnum (values) {
   return values[0].value
 }
@@ -125,15 +129,15 @@ function getFakePropType (prefix, prop, opts) {
   }
 }
 
-function fakeFlowFunction (prefix, flowType, opts) {
-  if (flowType.signature) {
+function fakeTypedFunction (prefix, type, opts) {
+  if (type.signature) {
     return Function.apply(
       null,
-      flowType.signature.arguments
+      type.signature.arguments
         .map(arg => arg.name)
         .concat(
           'return ' +
-            JSON.stringify(getFakeFlow(prefix, flowType.signature.return, opts))
+            JSON.stringify(getFakeTyped(prefix, type.signature.return, opts))
         )
     )
   } else {
@@ -141,10 +145,10 @@ function fakeFlowFunction (prefix, flowType, opts) {
   }
 }
 
-function fakeSignature (prefix, flowType, opts) {
-  switch (flowType.type) {
+function fakeSignature (prefix, type, opts) {
+  switch (type.type) {
     case 'function':
-      return fakeFlowFunction(prefix, flowType, opts)
+      return fakeTypedFunction(prefix, type, opts)
     case 'object':
       // structure:
       // {
@@ -167,12 +171,16 @@ function fakeSignature (prefix, flowType, opts) {
       //     ]
       //   }
       // }
-      if (flowType.signature.properties) {
-        return flowType.signature.properties
+      if (type.signature.properties) {
+        return type.signature.properties
           .filter(prop => prop.value.required || opts.optional)
           .reduce((acc, prop) => {
             return Object.assign({}, acc, {
-              [prop.key]: getFakeFlow(prefix + '.' + prop.key, prop.value, opts)
+              [prop.key]: getFakeTyped(
+                prefix + '.' + prop.key,
+                prop.value,
+                opts
+              )
             })
           }, {})
       } else {
@@ -183,14 +191,16 @@ function fakeSignature (prefix, flowType, opts) {
   }
 }
 
-function flowType (prefix, prop, opts) {
-  return getFakeFlow(prefix, prop.flowType, opts)
+function typed (prefix, prop, opts) {
+  return getFakeTyped(prefix, prop.flowType || prop.tsType, opts)
 }
 
-function getFakeFlow (prefix, flowType, opts) {
-  switch (flowType.name) {
+function getFakeTyped (prefix, type, opts) {
+  switch (type.name) {
     case 'boolean':
       return fakeBool()
+    case 'tuple':
+      return fakeArray()
     case 'string':
       return fakeString(prefix)
     case 'number':
@@ -211,15 +221,15 @@ function getFakeFlow (prefix, flowType, opts) {
       //   ],
       //   raw: 'Array<Object>'
       // }
-      if (flowType.elements) {
-        return flowType.elements.map(prop => {
-          return getFakeFlow(prefix, prop, opts)
+      if (type.elements) {
+        return type.elements.map(prop => {
+          return getFakeTyped(prefix, prop, opts)
         })
       } else {
         return fakeArray()
       }
     case 'signature':
-      return fakeSignature(prefix, flowType, opts)
+      return fakeSignature(prefix, type, opts)
     case 'unknown':
       return 'unknown'
     default:
@@ -228,8 +238,8 @@ function getFakeFlow (prefix, flowType, opts) {
 }
 
 function getFakeProp (prefix, prop, opts) {
-  return isFlow(prop)
-    ? flowType(prefix, prop, opts)
+  return isFlow(prop) || isTs(prop)
+    ? typed(prefix, prop, opts)
     : getFakePropType(prefix, prop, opts)
 }
 
@@ -248,12 +258,16 @@ function fakeDataForProps (props = {}, { optional = false } = {}) {
 
 module.exports = function (file, { optional = false, all = false } = {}) {
   const source = fs.readFileSync(file)
+  const isTsFile = file.match(/^.*\.(ts|tsx)$/)
+  const options = { filename: isTsFile ? file : undefined }
 
   if (all) {
     // Parse using findAllComponentDefinitions resolver
     const componentInfoArray = reactDocs.parse(
       source,
-      reactDocs.resolver.findAllComponentDefinitions
+      reactDocs.resolver.findAllComponentDefinitions,
+      null,
+      options
     )
 
     // Get fake props for each component
@@ -263,7 +277,7 @@ module.exports = function (file, { optional = false, all = false } = {}) {
     }))
   } else {
     // Parse
-    const componentInfo = reactDocs.parse(source)
+    const componentInfo = reactDocs.parse(source, null, null, options)
 
     // Get fake props
     return fakeDataForProps(componentInfo.props, { optional })
