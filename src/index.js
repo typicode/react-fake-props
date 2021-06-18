@@ -258,8 +258,7 @@ function fakeDataForProps (props = {}, { optional = false } = {}) {
 
 module.exports = function (file, { optional = false, all = false } = {}) {
   const source = fs.readFileSync(file)
-  const isTsFile = file.match(/^.*\.(ts|tsx)$/)
-  const options = { filename: isTsFile ? file : undefined }
+  const options = { filename: file }
 
   if (all) {
     // Parse using findAllComponentDefinitions resolver
