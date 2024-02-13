@@ -1,6 +1,6 @@
-const fs = require('fs')
-const React = require('react')
-const reactDocs = require('react-docgen')
+import { readFileSync } from 'fs'
+import { createElement } from 'react'
+import { parse, resolver } from 'react-docgen'
 
 function isFlow (prop) {
   return prop.flowType
@@ -69,7 +69,7 @@ function fakeNode (prefix) {
 }
 
 function fakeElement (prefix) {
-  return React.createElement('div', [], `fake ${prefix} element`)
+  return createElement('div', [], `fake ${prefix} element`)
 }
 
 function fakeInstanceOf (prefix) {
@@ -276,15 +276,15 @@ function fakeDataForProps (props = {}, { optional = false } = {}) {
   }, {})
 }
 
-module.exports = function (file, { optional = false, all = false } = {}) {
-  const source = fs.readFileSync(file)
+export default function (file, { optional = false, all = false } = {}) {
+  const source = readFileSync(file)
   const options = { filename: file }
 
   if (all) {
     // Parse using findAllComponentDefinitions resolver
-    const componentInfoArray = reactDocs.parse(
+    const componentInfoArray = parse(
       source,
-      reactDocs.resolver.findAllComponentDefinitions,
+      resolver.findAllComponentDefinitions,
       null,
       options
     )
@@ -296,7 +296,7 @@ module.exports = function (file, { optional = false, all = false } = {}) {
     }))
   } else {
     // Parse
-    const componentInfo = reactDocs.parse(source, null, null, options)
+    const componentInfo = parse(source, null, null, options)
 
     // Get fake props
     return fakeDataForProps(componentInfo.props, { optional })

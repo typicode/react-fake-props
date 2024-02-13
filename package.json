@@ -12,12 +12,16 @@
     "proptypes",
     "react-docgen"
   ],
-  "main": "lib/index.js",
+  "type": "module",
+  "exports": "./lib/index.js",
+  "engines": {
+    "node": ">=16"
+  },
   "repository": "https://github.com/typicode/react-fake-props",
   "author": "typicode <typicode@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest && standard",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js && standard",
     "build": "rimraf lib && babel src --out-dir lib",
     "fix": "prettier **/*.js --write && standard --fix",
     "prepublishOnly": "npm run build",
