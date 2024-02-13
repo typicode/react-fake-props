@@ -16,6 +16,8 @@ type Repo = {
   demoSite?: string
   npm?: string
   commits: Array<Commit>
+  access: 'public' | 'private'
+  stars: 0 | 42
 }
 
 type Person = {

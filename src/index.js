@@ -125,7 +125,7 @@ function getFakePropType (prefix, prop, opts) {
     case 'custom':
       return fakeCustom(prefix)
     default:
-      return 'Error, unknown type'
+      return `Error, unknown type (propType ${prop.type.name})`
   }
 }
 
@@ -195,6 +195,14 @@ function typed (prefix, prop, opts) {
   return getFakeTyped(prefix, prop.flowType || prop.tsType, opts)
 }
 
+/**
+ * Get fake value from Flow or TypeScript type
+ *
+ * @param {string} prefix
+ * @param {*} type Flow or TypeScript type of a property
+ * @param {*} opts
+ * @returns {unknown}
+ */
 function getFakeTyped (prefix, type, opts) {
   switch (type.name) {
     case 'boolean':
@@ -230,13 +238,25 @@ function getFakeTyped (prefix, type, opts) {
       }
     case 'signature':
       return fakeSignature(prefix, type, opts)
+    case 'union':
+      return getFakeTyped(prefix, type.elements[0], opts)
+    case 'literal':
+      return eval(type.value) // eslint-disable-line no-eval
     case 'unknown':
       return 'unknown'
     default:
-      return 'Error, unknown type'
+      return `Error, unknown type (typed ${type.name})`
   }
 }
 
+/**
+ * Get fake value for react-docgen prop
+ *
+ * @param {*} prefix
+ * @param {*} prop react-docgen prop, may include Flow or TypeScript type
+ * @param {*} opts
+ * @returns {unknown}
+ */
 function getFakeProp (prefix, prop, opts) {
   return isFlow(prop) || isTs(prop)
     ? typed(prefix, prop, opts)

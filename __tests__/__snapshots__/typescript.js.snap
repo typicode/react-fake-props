@@ -18,6 +18,7 @@ Object {
     "name": "person.name",
     "repos": Array [
       Object {
+        "access": "public",
         "commits": Array [
           Object {
             "id": "person.repos.commits.id",
@@ -26,6 +27,7 @@ Object {
         ],
         "demoSite": "person.repos.demoSite",
         "npm": "person.repos.npm",
+        "stars": 0,
         "url": "person.repos.url",
       },
     ],
@@ -48,12 +50,14 @@ Object {
     "name": "person.name",
     "repos": Array [
       Object {
+        "access": "public",
         "commits": Array [
           Object {
             "id": "person.repos.commits.id",
             "message": "person.repos.commits.message",
           },
         ],
+        "stars": 0,
         "url": "person.repos.url",
       },
     ],
