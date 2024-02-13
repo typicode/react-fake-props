@@ -29,7 +29,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "react-docgen": "5.4.0"
+    "react-docgen": "^7.0.3"
   },
   "files": [
     "lib"

@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs'
 import { createElement } from 'react'
-import { parse, resolver } from 'react-docgen'
+import { parse, builtinResolvers } from 'react-docgen'
 
 function isFlow (prop) {
   return prop.flowType
@@ -284,9 +284,10 @@ export default function (file, { optional = false, all = false } = {}) {
     // Parse using findAllComponentDefinitions resolver
     const componentInfoArray = parse(
       source,
-      resolver.findAllComponentDefinitions,
-      null,
-      options
+      {
+        resolver: new builtinResolvers.FindAllDefinitionsResolver(),
+        filename: file
+      }
     )
 
     // Get fake props for each component
@@ -296,9 +297,9 @@ export default function (file, { optional = false, all = false } = {}) {
     }))
   } else {
     // Parse
-    const componentInfo = parse(source, null, null, options)
+    const componentInfo = parse(source, options)
 
     // Get fake props
-    return fakeDataForProps(componentInfo.props, { optional })
+    return fakeDataForProps(componentInfo[0].props, { optional })
   }
 }
