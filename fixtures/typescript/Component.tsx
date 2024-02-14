@@ -1,23 +1,10 @@
 import React from 'react'
+import type { Repo } from './repos';
 
 type Address = {
   street: string
   street2?: string
   pincode: number
-}
-
-type Commit = {
-  id: string
-  message: string
-}
-
-type Repo = {
-  url: string
-  demoSite?: string
-  npm?: string
-  commits: Array<Commit>
-  access: 'public' | 'private'
-  stars: 0 | 42
 }
 
 type Person = {

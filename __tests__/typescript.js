@@ -1,13 +1,12 @@
 import path from 'path'
 import fakeProps from '../src'
 
-const ComponentFile = path.join(
-  __dirname,
-  '../fixtures/typescript/Component.tsx'
+const ComponentFile = path.resolve(
+  './fixtures/typescript/Component.tsx'
 )
-const SimpleFile = path.join(__dirname, '../fixtures/typescript/Simple.tsx')
-const NoProps = require.resolve('../fixtures/typescript/NoProps.tsx')
-const Multiple = require.resolve('../fixtures/typescript/Multiple.tsx')
+const SimpleFile = path.resolve('./fixtures/typescript/Simple.tsx')
+const NoProps = path.resolve('./fixtures/typescript/NoProps.tsx')
+const Multiple = path.resolve('./fixtures/typescript/Multiple.tsx')
 
 describe('fakeProps', () => {
   it('should return an object with no props (snapshot)', () => {

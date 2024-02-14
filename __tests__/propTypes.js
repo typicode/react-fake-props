@@ -1,14 +1,13 @@
 import path from 'path'
 import fakeProps from '../src'
 
-const ComponentFile = path.join(
-  __dirname,
-  '../fixtures/propTypes/Component.jsx'
+const ComponentFile = path.resolve(
+  './fixtures/propTypes/Component.jsx'
 )
-const SimpleFile = path.join(__dirname, '../fixtures/propTypes/Simple.jsx')
-const NoProps = require.resolve('../fixtures/propTypes/NoProps.jsx')
-const Multiple = require.resolve('../fixtures/propTypes/Multiple.jsx')
-const NestedShape = require.resolve('../fixtures/propTypes/NestedShape.jsx')
+const SimpleFile = path.resolve('./fixtures/propTypes/Simple.jsx')
+const NoProps = path.resolve('./fixtures/propTypes/NoProps.jsx')
+const Multiple = path.resolve('./fixtures/propTypes/Multiple.jsx')
+const NestedShape = path.resolve('./fixtures/propTypes/NestedShape.jsx')
 
 describe('fakeProps', () => {
   it('should return an object with no props (snapshot)', () => {
